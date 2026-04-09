@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+  color: #1a2a4a;
+}
+
+:root {
+  --navy: #1a2a4a;
+  --navy-light: #2c3e6b;
+  --blue: #1565c0;
+  --blue-light: #1976d2;
+  --accent: #0288d1;
+  --teal: #00838f;
+  --bg: #f4f6f9;
+  --bg-white: #ffffff;
+  --bg-card: #ffffff;
+  --border: #dce3f0;
+  --text-primary: #1a2a4a;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --success: #2e7d32;
+  --warning: #e65100;
+}
+
+a { text-decoration: none; }
+
+h1, h2, h3 { color: var(--navy); }
