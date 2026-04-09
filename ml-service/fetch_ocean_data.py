@@ -70,7 +70,7 @@ def generate_realistic_ocean_params(lat, lon, sst=None, chlorophyll=None):
 def fetch_and_save_ocean_data():
     print("Fetching species data from MongoDB...")
 
-    mongo_url = "http://localhost:5000/api/species"
+    mongo_url = "https://marine-platform-1.onrender.com/api/species"
     response = requests.get(mongo_url)
     species = response.json()
 
@@ -156,7 +156,7 @@ def fetch_and_save_ocean_data():
 
     print(f"\nSaving {len(ocean_records)} ocean records to database...")
 
-    save_url = "http://localhost:5000/api/ocean/bulk-save"
+    save_url = "https://marine-platform-1.onrender.com/api/ocean/bulk-save"
     save_response = requests.post(
         save_url,
         json=ocean_records,

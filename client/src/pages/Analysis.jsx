@@ -47,8 +47,8 @@ const [predicting, setPredicting] = useState(false)
     const fetchAll = async () => {
       try {
         const [oceanRes, speciesRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/ocean'),
-          axios.get('http://localhost:5000/api/species')
+          axios.get('https://marine-platform-1.onrender.com/api/ocean'),
+          axios.get('https://marine-platform-1.onrender.com/api/species')
         ])
         setOceanData(oceanRes.data)
         setSpeciesData(speciesRes.data)
@@ -72,7 +72,7 @@ const [predicting, setPredicting] = useState(false)
     setSearching(true)
 
     try {
-      const tagRes = await axios.post('http://localhost:5001/tag', { text: searchQuery })
+      const tagRes = await axios.post('https://marine-platform-cjyl.onrender.com/tag', { text: searchQuery })
       const tags = tagRes.data.tags
 
       const query = searchQuery.toLowerCase()
@@ -125,8 +125,8 @@ const [predicting, setPredicting] = useState(false)
       }))
 
       const [correlRes, clusterRes] = await Promise.all([
-        axios.post('http://localhost:5001/correlate', correlPayload),
-        axios.post('http://localhost:5001/cluster', clusterPayload.length >= 3 ? clusterPayload : oceanData.map(d => ({ latitude: d.location.latitude, longitude: d.location.longitude })))
+        axios.post('https://marine-platform-cjyl.onrender.com/correlate', correlPayload),
+        axios.post('https://marine-platform-cjyl.onrender.com/cluster', clusterPayload.length >= 3 ? clusterPayload : oceanData.map(d => ({ latitude: d.location.latitude, longitude: d.location.longitude })))
       ])
 
       const scatterData = filteredOcean.map(d => ({
@@ -525,7 +525,7 @@ const [predicting, setPredicting] = useState(false)
           onClick={async () => {
             setPredicting(true)
             try {
-              const oceanRes = await axios.get('http://localhost:5000/api/ocean')
+              const oceanRes = await axios.get('https://marine-platform-1.onrender.com/api/ocean')
               const payload = oceanRes.data.map(d => ({
                 seaSurfaceTemperature: d.parameters.seaSurfaceTemperature,
                 salinity: d.parameters.salinity,
@@ -534,7 +534,7 @@ const [predicting, setPredicting] = useState(false)
                 dissolvedOxygen: d.parameters.dissolvedOxygen,
                 catchVolume: d.fisheries.catchVolume
               }))
-              const res = await axios.post('http://localhost:5001/predict', payload)
+              const res = await axios.post('https://marine-platform-cjyl.onrender.com/predict', payload)
               setPrediction(res.data)
             } catch (err) {
               console.error(err)

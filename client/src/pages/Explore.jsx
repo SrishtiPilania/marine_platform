@@ -13,8 +13,8 @@ function Explore() {
     const fetchAll = async () => {
       try {
         const [speciesRes, oceanRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/species'),
-          axios.get('http://localhost:5000/api/ocean')
+          axios.get('https://marine-platform-1.onrender.com/api/species'),
+          axios.get('https://marine-platform-1.onrender.com/api/ocean')
         ])
         setSpecies(speciesRes.data)
         setOceanData(oceanRes.data)

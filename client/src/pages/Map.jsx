@@ -15,8 +15,8 @@ function Map() {
     const fetchAll = async () => {
       try {
         const [speciesRes, oceanRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/species'),
-          axios.get('http://localhost:5000/api/ocean')
+          axios.get('https://marine-platform-1.onrender.com/api/species'),
+          axios.get('https://marine-platform-1.onrender.com/api/ocean')
         ])
         const valid = speciesRes.data.filter(s => s.occurrence.latitude && s.occurrence.longitude)
         setSpecies(valid)

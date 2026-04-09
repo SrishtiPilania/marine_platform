@@ -9,7 +9,7 @@ function Preprocessing() {
   const handleRunPreprocessing = async () => {
     setLoading(true)
     try {
-      const oceanRes = await axios.get('http://localhost:5000/api/ocean')
+      const oceanRes = await axios.get('https://marine-platform-1.onrender.com/api/ocean')
       const raw = oceanRes.data.map(d => ({
         region: d.location.region,
         seaSurfaceTemperature: d.parameters.seaSurfaceTemperature,

@@ -16,7 +16,7 @@ function Upload() {
     try {
       const formData = new FormData()
       formData.append('file', speciesFile)
-      const res = await axios.post('http://localhost:5000/api/upload/species-csv', formData, {
+      const res = await axios.post('https://marine-platform-1.onrender.com/api/upload/species-csv', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
       setSpeciesMsg({ type: 'success', text: res.data.message })
@@ -34,7 +34,7 @@ function Upload() {
     try {
       const formData = new FormData()
       formData.append('file', oceanFile)
-      const res = await axios.post('http://localhost:5000/api/upload/ocean-csv', formData, {
+      const res = await axios.post('https://marine-platform-1.onrender.com/api/upload/ocean-csv', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
       setOceanMsg({ type: 'success', text: res.data.message })

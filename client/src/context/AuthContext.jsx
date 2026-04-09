@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      axios.get('http://localhost:5000/api/auth/me', {
+      axios.get('https://marine-platform-1.onrender.com/api/auth/me', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => setUser(res.data.user))
@@ -22,14 +22,14 @@ export function AuthProvider({ children }) {
   }, [])
 
   const login = async (email, password) => {
-    const res = await axios.post('http://localhost:5000/api/auth/login', { email, password })
+    const res = await axios.post('https://marine-platform-1.onrender.com/api/auth/login', { email, password })
     localStorage.setItem('token', res.data.token)
     setUser(res.data.user)
     return res.data
   }
 
   const register = async (name, email, password) => {
-    const res = await axios.post('http://localhost:5000/api/auth/register', { name, email, password })
+    const res = await axios.post('https://marine-platform-1.onrender.com/api/auth/register', { name, email, password })
     localStorage.setItem('token', res.data.token)
     setUser(res.data.user)
     return res.data

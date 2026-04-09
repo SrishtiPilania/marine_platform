@@ -90,7 +90,7 @@ total_saved = 0
 for i in range(0, len(records), batch_size):
     batch = records[i:i + batch_size]
     response = requests.post(
-        'http://localhost:5000/api/ocean/bulk-save',
+        'https://marine-platform-1.onrender.com/api/ocean/bulk-save',
         json=batch,
         headers={'Content-Type': 'application/json'}
     )

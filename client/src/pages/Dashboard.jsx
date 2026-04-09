@@ -25,8 +25,8 @@ function Dashboard() {
     const fetchData = async () => {
       try {
         const [oceanRes, speciesRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/ocean'),
-          axios.get('http://localhost:5000/api/species')
+          axios.get('https://marine-platform-1.onrender.com/api/ocean'),
+          axios.get('https://marine-platform-1.onrender.com/api/species')
         ])
         setOceanData(oceanRes.data)
         setSpeciesData(speciesRes.data)
@@ -35,7 +35,7 @@ function Dashboard() {
           latitude: d.location.latitude,
           longitude: d.location.longitude
         }))
-        const clusterRes = await axios.post('http://localhost:5001/cluster', clusterPayload)
+        const clusterRes = await axios.post('https://marine-platform-cjyl.onrender.com/cluster', clusterPayload)
         setClusterResult(clusterRes.data)
 
         const correlPayload = oceanRes.data.map(d => ({
@@ -46,7 +46,7 @@ function Dashboard() {
           dissolvedOxygen: d.parameters.dissolvedOxygen,
           catchVolume: d.fisheries.catchVolume
         }))
-        const correlRes = await axios.post('http://localhost:5001/correlate', correlPayload)
+        const correlRes = await axios.post('https://marine-platform-cjyl.onrender.com/correlate', correlPayload)
         setCorrelations(correlRes.data)
 
       } catch (err) {
